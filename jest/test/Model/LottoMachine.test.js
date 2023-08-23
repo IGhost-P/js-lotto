@@ -1,5 +1,4 @@
 import LottoMachine from "../../src/Model/LottoMachine";
-import LotteryShop from "../../src/Model/LotteryShop";
 
 describe("LottMachine", () => {
 	let lottoMachine;
