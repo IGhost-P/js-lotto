@@ -14,12 +14,13 @@
 
 - [ ] LottoTicket을 생성할 수 있다.
 - [ ] LottoTicket을 생성할 때, LottoShop에서 정한 가격만큼의 금액이 차감된다. => LottoShop에서 처리
-- [ ] LottoTicket을 생성할 때, 1 ~ 45 사이의 숫자 6개가 랜덤으로 생성된다. => LottoTicket에서 처리
-- [ ] LottoTicket을 생성할 때, 1 ~ 45 사이의 숫자 6개는 중복되지 않는다. => LottoTicket에서 처리
 
 ### LottoTicket
 
 - [ ] LottoTicket은 1 ~ 45 사이의 숫자 6개를 가지고 있다.
+- [ ] LottoTicket은 1 ~ 45 사이의 랜덤한 숫자 6개를 가지고 있다.
+- [ ] LottoTicket은 1 ~ 45 사이의 숫자 6개는 중복되지 않는다.
+
 
 ### LotteyOffice
 
