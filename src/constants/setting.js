@@ -1,0 +1,6 @@
+// LottoMacinhe setting
+export const LOTTOMACHINE = {
+	LOTTO_TICKET_LENGTH: 6,
+	LOTTO_TICKET_MIN_NUMBER: 1,
+	LOTTO_TICKET_MAX_NUMBER: 45,
+};

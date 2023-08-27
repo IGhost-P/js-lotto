@@ -1,45 +1,50 @@
-import LottoMachine from "../../src/Model/LottoMachine";
-import LottoTicket from "../../src/Model/LottoTicket";
+import LottoMachine from "../../../src/Model/LottoMachine";
+import LottoTicket from "../../../src/Model/LottoTicket";
 
-describe("LottMachine", () => {
+describe("LottoMachine", () => {
 	let lottoMachine;
+
 	beforeEach(() => {
 		lottoMachine = new LottoMachine();
 	});
 
 	test("LottoTicket을 발급받을 수 있다", () => {
 		// when
-		const lottoTicket = lottoMachine.getLottoTicket({
-			lottoTicket: [1, 2, 3, 4, 5, 6],
-		});
+		const lottoTicket = lottoMachine.getLottoTicket();
 
 		// then
 		expect(lottoTicket instanceof LottoTicket).toBeTruthy();
 	});
 
-	test("LottoTicket에 넘기는 숫자의 범위는 1~45가 아니면 실패한다", () => {
-		// given
-		const lottoTicket = [1, 2, 3, 4, 5, 50];
-
+	test("발급받은 LottoTicket의 숫자의 범위는 1~45이다", () => {
 		// when
-		const result = lottoMachine.getLottoTicket({
-			lottoTicket,
-		});
+		const lottoTicket = lottoMachine.getLottoTicket();
 
 		// then
-		expect(() => result).toThrow("로또 번호는 1~45 사이의 숫자여야 합니다.");
+		const allNumbersAreValid = lottoTicket.lottoTicket.every(
+			(number) =>
+				number >= LottoMachine.LOTTO_TICKET_MIN_NUMBER &&
+				number <= LottoMachine.LOTTO_TICKET_MAX_NUMBER
+		);
+		expect(allNumbersAreValid).toBeTruthy();
 	});
 
-	test("LottoTicket에 넘기는 숫자가 중복이면 실패한다", () => {
-		// given
-		const lottoTicket = [1, 2, 3, 4, 5, 5];
-
+	test("발급받은 LottoTicket의 숫자가 중복되지 않아야 한다", () => {
 		// when
-		const result = lottoMachine.getLottoTicket({
-			lottoTicket,
-		});
+		const lottoTicket = lottoMachine.getLottoTicket();
 
 		// then
-		expect(() => result).toThrow("로또 번호는 중복되지 않아야 합니다.");
+		const uniqueNumbersCount = new Set(lottoTicket.lottoTicket).size;
+		expect(uniqueNumbersCount).toBe(LottoMachine.LOTTO_TICKET_LENGTH);
+	});
+
+	test("LottoTicket의 길이는 6이다", () => {
+		// when
+		const lottoTicket = lottoMachine.getLottoTicket();
+
+		// then
+		expect(lottoTicket.lottoTicket.length).toBe(
+			LottoMachine.LOTTO_TICKET_LENGTH
+		);
 	});
 });
