@@ -17,22 +17,29 @@ describe("LottMachine", () => {
 		expect(lottoTicket instanceof LottoTicket).toBeTruthy();
 	});
 
-	test("LottoTicket에 넘기는 숫자의 범위는 1~45", () => {
+	test("LottoTicket에 넘기는 숫자의 범위는 1~45가 아니면 실패한다", () => {
+		// given
+		const lottoTicket = [1, 2, 3, 4, 5, 50];
+
 		// when
-		const result = LottoMachine.generateNumbers();
+		const result = lottoMachine.getLottoTicket({
+			lottoTicket,
+		});
 
 		// then
-		for (let num of result) {
-			expect(num).toBeGreaterThanOrEqual(1);
-			expect(num).toBeLessThanOrEqual(45);
-		}
+		expect(() => result).toThrow("로또 번호는 1~45 사이의 숫자여야 합니다.");
 	});
 
-	test("LottoTicket에 넘기는 숫자는 중복되지 않는다", () => {
+	test("LottoTicket에 넘기는 숫자가 중복이면 실패한다", () => {
+		// given
+		const lottoTicket = [1, 2, 3, 4, 5, 5];
+
 		// when
-		const result = LottoMachine.generateNumbers();
+		const result = lottoMachine.getLottoTicket({
+			lottoTicket,
+		});
 
 		// then
-		expect(new Set(result).size).toEqual(6);
+		expect(() => result).toThrow("로또 번호는 중복되지 않아야 합니다.");
 	});
 });
