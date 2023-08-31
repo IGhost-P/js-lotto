@@ -1,4 +1,4 @@
-import LottoStatistics from "../../src/Model/LottoStatistics";
+import LottoStatistics from "../../../src/Model/LottoStatistics";
 
 describe("LottoStatistics test", () => {
 	test("입력받은 n개의 로또 티켓을 비교하여 일치하는 갯수에 따라 등수를 반환한다", () => {

@@ -1,4 +1,4 @@
-import LottoOffice from "../../src/Model/LottoOffice";
+import LottoOffice from "../../../src/Model/LottoOffice";
 
 describe("LottoOffice", () => {
 	let lottoOffice;
