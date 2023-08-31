@@ -1,5 +1,4 @@
-import LotteryShop from "../../src/Model/LotteryShop";
-import LottoMachine from "../../src/Model/LottoMachine";
+import LotteryShop from "../../../src/Model/LotteryShop";
 
 describe("LotteryShop", () => {
 	let lotteryShop;
@@ -18,28 +17,20 @@ describe("LotteryShop", () => {
 		expect(lotteryShop.getTicketPrice()).toBe(price);
 	});
 
-	test("LottoMachine을 생성할 수 있다.", () => {
-		// given
-		const price = 1000;
-		lotteryShop.setTicketPrice(price);
-
-		// when
-		const lottoMachine = lotteryShop.createLottoMachine();
-
+	test("LottoMachine을 가지고 있다.", () => {
 		// then
-		expect(lottoMachine).not.toBeUndefined();
+		expect(lotteryShop.lottoMachine).not.toBeUndefined();
 	});
 
 	test("LottoMachine을 통해 랜덤 로또 티켓을 발급받을 수 있다", () => {
 		// given
 		const price = 1000;
 		lotteryShop.setTicketPrice(price);
-		const lottoMachine = lotteryShop.createLottoMachine();
 
 		// when
-		const lottoTicket = lottoMachine.getLottoTicket();
+		lotteryShop.makeTickets(price);
 
 		// then
-		expect(lottoTicket).not.toBeUndefined();
+		expect(lotteryShop.lottoTickets.length).toBe(1);
 	});
 });

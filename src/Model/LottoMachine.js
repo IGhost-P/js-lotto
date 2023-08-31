@@ -4,6 +4,7 @@ class LottoMachine {
 	static LOTTO_TICKET_LENGTH = 6;
 	static LOTTO_TICKET_MIN_NUMBER = 1;
 	static LOTTO_TICKET_MAX_NUMBER = 45;
+	static instance;
 
 	constructor() {
 		this.lottoTicket = [];
