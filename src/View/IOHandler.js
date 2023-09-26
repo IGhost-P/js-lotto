@@ -1,4 +1,4 @@
-const readline = require('readline');
+const readline = require("readline");
 
 class IOHandler {
   constructor() {
@@ -24,3 +24,5 @@ class IOHandler {
     this.rl.close();
   }
 }
+
+export default IOHandler;
